@@ -1,0 +1,40 @@
+type Persona {
+    id: ID!
+    nombre: String
+    apellidoPaterno: String
+    apellidoMaterno: String
+    ci: String
+    wallet_address_ETH: String
+}
+
+type Role {
+    id: ID!
+    name: String
+}
+
+type User {
+    id: ID!
+    username: String
+    password: String
+    persona: Persona
+    roles: [Role]
+}
+
+input PersonaInput {
+    nombre: String
+    apellidoPaterno: String
+    apellidoMaterno: String
+    ci: String
+    wallet_address_ETH: String
+}
+
+input UserInput{
+    username: String
+    password: String
+    personaId: String
+    roleIds: [String]
+}
+
+
+
+

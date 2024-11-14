@@ -1,0 +1,12 @@
+
+type Transaccion {
+    id: ID
+    tipo: String
+    fecha: String
+    monto: Float
+    comprador: User
+    vendedor: User
+    inmueble: Inmueble
+    detalles: String
+}
+
