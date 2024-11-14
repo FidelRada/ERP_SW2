@@ -37,6 +37,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers("/public/**").permitAll()
+                .requestMatchers("/graphql").permitAll()
                 .anyRequest().authenticated()
             )
 //            .formLogin(form -> form
