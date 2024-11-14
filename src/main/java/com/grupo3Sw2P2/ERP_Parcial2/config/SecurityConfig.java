@@ -35,7 +35,7 @@ public class SecurityConfig {
          http
             .csrf().disable()
             .authorizeRequests()
-            .requestMatchers("/graphql").permitAll()  // Permite todos los métodos en /graphql
+            .requestMatchers("/graphiql").permitAll()  // Permite todos los métodos en /graphql
             .anyRequest().authenticated()
             .and()
             .httpBasic();
