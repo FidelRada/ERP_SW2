@@ -32,13 +32,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-         http
-            .csrf().disable()
-            .authorizeRequests()
-            .requestMatchers("/graphiql").permitAll()  // Permite todos los métodos en /graphql
-            .anyRequest().authenticated()
-            .and()
-            .httpBasic();
+        http
+            .csrf(csrf -> csrf.disable())
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers("/public/**").permitAll()
+                .anyRequest().authenticated()
+            )
+//            .formLogin(form -> form
+//                .loginPage("/login")
+//                .permitAll()
+//            )
+            .httpBasic((t) -> {
+              
+            });
 
         return http.build();
     }

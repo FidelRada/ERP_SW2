@@ -14,31 +14,31 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author fidel
  */
 
-@Configuration
-public class WebConfig {
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/graphql")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*");
-                        //.allowCredentials(true);
-            }
-        };
-    }
-}
 //@Configuration
-//public class WebConfig implements WebMvcConfigurer {
-//
-//    @Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/graphql")
-//                .allowedOrigins("http://localhost:4200")// URL de tu aplicación Angular
-//                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-//                .allowedHeaders("Authorization", "Content-Type")
-//                .allowCredentials(true);
+//public class WebConfig {
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/graphql")
+//                        .allowedOrigins("*")
+//                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+//                        .allowedHeaders("*");
+//                        //.allowCredentials(true);
+//            }
+//        };
 //    }
 //}
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/graphql")
+                .allowedOrigins("http://localhost:4200")// URL de tu aplicación Angular
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Authorization", "Content-Type")
+                .allowCredentials(true);
+    }
+}
